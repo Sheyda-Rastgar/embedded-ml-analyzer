@@ -37,4 +37,3 @@ Output estimates:
 - Estimated RAM usage for activations (approximate)
 - Overall feasibility result and the likely bottleneck
 
-## Planned repository structure
