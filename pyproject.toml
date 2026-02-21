@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "embedded-ml-analyzer"
+version = "0.1.0"
+description = "Constraint-aware analysis tool for embedded ML deployment"
+authors = [
+  { name="Sheyda Rastgar", email="s.rastgaar@gmail.com" }
+]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "torch"
+]
