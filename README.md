@@ -153,3 +153,5 @@ Being able to reason about feasibility before training reduces iteration cost an
 This project is an ongoing exploration of that early-stage design space.
 
 Feedback and technical discussion are welcome.
+Email: s.rastgaar@gmail.com
+Linkdin: https://www.linkedin.com/in/sheyda-rastgar-49511725b/
