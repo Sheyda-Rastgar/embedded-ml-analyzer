@@ -8,19 +8,19 @@ from embedml.hardware_profiles import STM32_SMALL
 model = nn.Sequential(
     nn.Linear(10, 64),
     nn.ReLU(),
-    nn.Linear(64, 2)
+    nn.Linear(64, 2),
 )
 
 analyzer = ModelAnalyzer(model)
 
 total_params = analyzer.count_parameters()
-weight_memory = analyzer.estimate_weight_memory(bytes_per_param=4)
 
-result = STM32_SMALL.check_fit(
-    required_ram=0,  # Activation not considered yet
-    required_flash=weight_memory
-)
+float32_flash = analyzer.estimate_weight_memory(bytes_per_param=4)
+int8_flash = analyzer.estimate_weight_memory(bytes_per_param=1)
+
+result_f32 = STM32_SMALL.check_fit(required_ram=0, required_flash=float32_flash)
+result_i8 = STM32_SMALL.check_fit(required_ram=0, required_flash=int8_flash)
 
 print("Total parameters:", total_params)
-print("Estimated weight memory (bytes):", weight_memory)
-print("Feasible on STM32_SMALL:", result["fits"])
+print("Float32 weights (bytes):", float32_flash, "| fits:", result_f32["fits"])
+print("Int8 weights (bytes):", int8_flash, "| fits:", result_i8["fits"])
